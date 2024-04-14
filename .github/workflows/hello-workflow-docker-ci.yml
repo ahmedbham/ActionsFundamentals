@@ -1,0 +1,25 @@
+name: test docker worflow action
+on: 
+  push:
+    branches:
+      - main
+    paths:  
+      - hello-world-docker-action/action.yml
+  workflow_dispatch:   
+  
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v2
+            - name: Run action
+              id: hello
+              uses: ./hello-world-docker-action
+              with:
+                who-to-greet: '@ahmedbham'
+            - name: output time
+              run: echo "The time we greeted the person was ${{ steps.hello.outputs.time }}"
+
+        
+        
