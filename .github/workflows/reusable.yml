@@ -19,6 +19,8 @@ jobs:
     outputs:    
         current-time: steps.time.outputs.current-time
     steps:
+    - name: checkout action repository
+      uses: actions/checkout@v2    
     - name: Echo greeting
       run: echo "Hello ${{ github.events.inputs.who-to-greet }}"
     - name: Set current time
