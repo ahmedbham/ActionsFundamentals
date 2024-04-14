@@ -1,0 +1,19 @@
+name: 'Hello World Docker Action'
+description: 'Greet someone with a hello world message'
+inputs:
+  who-to-greet:  # id of input
+    description: 'Who to greet'
+    required: true
+    default: 'World'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.who-to-greet }}
+outputs:
+  time: 
+    description: 'the time we said hello'
+#  The  action.yaml  file defines the metadata for the action. The  name  and  description  fields are self-explanatory. The  inputs  field defines the inputs that the action expects. In this case, the action expects a single input,  who-to-greet , which is a string. The  required  field specifies whether the input is required or not. The  default  field specifies the default value for the input. 
+#  The  runs  field specifies how the action is executed. In this case, the action runs using a Docker container. The  image  field specifies the Docker image to use. The  args  field specifies the arguments to pass to the Docker container. In this case, the argument is the value of the  who-to-greet  input. 
+#  The  Dockerfile  file defines the Docker image that the action uses. 
+ # Path: hello-world-docker-action/Dockerfile
